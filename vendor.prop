@@ -138,6 +138,9 @@ vendor.gralloc.enable_fb_ubwc=1
 debug.vds.allow_hwc=0
 vendor.display.lcd_density=320
 
+# Fastbootd
+ro.fastbootd.available=true
+
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
