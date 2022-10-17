@@ -13,9 +13,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Disable APEX compression
-PRODUCT_COMPRESSED_APEX := false
-
 # Inherit proprietary files
 $(call inherit-product, vendor/xiaomi/clover/clover-vendor.mk)
 
