@@ -8,7 +8,7 @@ java_library {
     name: "org.ifaa.android.manager",
     installable: true,
     libs: [
-	"unsupportedappusage", // for android.compat.annotation.UnsupportedAppUsage
+	    "unsupportedappusage", // for android.compat.annotation.UnsupportedAppUsage
     ],
     srcs: [
         "src/**/*.java",

@@ -79,6 +79,8 @@ ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=7
 vendor.audio.adm.buffering.ms=6
 
+persist.vendor.audio.fluence.audiorec=true
+
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
 bluetooth.hardware.power.operating_voltage_mv=3300
@@ -97,11 +99,19 @@ bluetooth.profile.pan.panu.enabled?=true
 bluetooth.profile.pbap.server.enabled?=true
 bluetooth.profile.sap.server.enabled?=true
 vendor.qcom.bluetooth.soc=cherokee
+bluetooth.device.default_name=Xiaomi Mi PAD 4
 
 # Camera
 persist.vendor.camera.preview.ubwc=0
 vendor.video.disable.ubwc=1
 vidc.enc.dcvs.extra-buff-count=2
+persist.camera.stats.test=5
+persist.camera.HAL3.enabled=1
+persist.camera.preview.ubwc=0
+persist.vendor.camera.dual.isp.sync=0
+persist.vendor.camera.HAL3.enabled=1
+persist.vendor.camera.eis.enable=1
+persist.vendor.camera.exif.make=Xiaomi
 
 # Crypto
 ro.crypto.volume.filenames_mode=aes-256-cts
@@ -125,6 +135,8 @@ ro.vendor.display.cabl=0
 vendor.display.disable_skip_validate=1
 vendor.display.enable_default_color_mode=1
 vendor.gralloc.enable_fb_ubwc=1
+debug.vds.allow_hwc=0
+vendor.display.lcd_density=320
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
@@ -136,6 +148,9 @@ ro.vendor.qti.va_aosp.support=1
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1 
 persist.dbg.wfc_avail_ovr=1
+
+# Lockscreen rotation (requested by ibooth2004@XDA (https://forum.xda-developers.com/showpost.php?p=82157253&postcount=545)
+lockscreen.rot_override=true
 
 # Media
 debug.stagefright.omx_default_rank.sw-audio=1
@@ -169,9 +184,15 @@ ro.vendor.sensors.pmd=true
 ro.vendor.sensors.sta_detect=true
 ro.vendor.sensors.mot_detect=true
 
+# Single SIM
+persist.radio.multisim.config=ssss
+
 # SoC
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=SDM660
+
+# Ultra Sound
+audio.chk.cal.us=0
 
 # USB
 vendor.usb.rmnet.func.name=rmnet_bam
