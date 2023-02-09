@@ -152,9 +152,6 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1 
 persist.dbg.wfc_avail_ovr=1
 
-# Lockscreen rotation (requested by ibooth2004@XDA (https://forum.xda-developers.com/showpost.php?p=82157253&postcount=545)
-lockscreen.rot_override=true
-
 # Media
 debug.stagefright.omx_default_rank.sw-audio=1
 debug.stagefright.omx_default_rank=0
