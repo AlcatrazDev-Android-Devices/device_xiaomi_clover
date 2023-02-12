@@ -974,4 +974,8 @@
 
     <!-- Determines whether the shell features all run on another thread. -->
     <bool name="config_enableShellMainThread">true</bool>
+
+    <!-- Height of the status bar in portrait. The height should be
+         Max((status bar content height + waterfall top size), top cutout size) -->
+    <dimen name="status_bar_height">28dp</dimen>
 </resources>
