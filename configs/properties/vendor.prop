@@ -179,6 +179,7 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # QCOM
 persist.vendor.qcomsysd.enabled=1
+persist.vendor.camera.perflock.enable=0
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf.scroll_opt=true
 
