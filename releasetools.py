@@ -19,7 +19,8 @@ import re
 
 def FullOTA_InstallBegin(info):
   input_zip = info.input_zip
-  AddImage(info, "RADIO", input_zip, "super_dummy.img", "/tmp/super_dummy.img");
+  NoticeForOldPartitonUsers(info)
+  AddImage(info, "RADIO", input_zip, "super_dummy.img", "/tmp/super_dummy.img")
   info.script.AppendExtra('package_extract_file("install/bin/flash_super_dummy.sh", "/tmp/flash_super_dummy.sh");')
   info.script.AppendExtra('set_metadata("/tmp/flash_super_dummy.sh", "uid", 0, "gid", 0, "mode", 0755);')
   info.script.AppendExtra('run_program("/tmp/flash_super_dummy.sh");')
@@ -34,3 +35,21 @@ def AddImage(info, dir, input_zip, basename, dest):
   common.ZipWriteStr(info.output_zip, basename, data)
   info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
   info.script.AppendExtra('package_extract_file("%s", "%s");' % (basename, dest))
+
+def NoticeForOldPartitonUsers(info):
+  info.script.Print("Notice: If you encountered any error contains")
+  info.script.Print("'dynamic_partitions_op_list' or some partiton")
+  info.script.Print("words in it, pls use the recovery that publishes")
+  info.script.Print("with the system. And READ THE INSTRUCTION before")
+  info.script.Print("you start flashing.")
+  info.script.Print("  ")
+  info.script.Print("Also if you are from normal partitioning ROM(like")
+  info.script.Print("the rom you flash through the TWRP), it's common")
+  info.script.Print("to see the error that contains 'metadata' or")
+  info.script.Print("'liblp', ignore it and it won't happen again when")
+  info.script.Print("you flash a dynamic partiton system next time.")
+  info.script.Print("  ")
+  info.script.Print("  ")
+  info.script.Print("Enjoy!")
+  info.script.Print("Yours, Alcatraz")
+  info.script.Print("----------------------------------------------")
