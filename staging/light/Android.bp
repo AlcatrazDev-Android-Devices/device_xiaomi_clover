@@ -19,6 +19,10 @@ cc_binary {
     shared_libs: [
         "libbase",
         "libbinder_ndk",
+        "libutils",
+        "libbinder",
+        "libcutils",
+		"liblog",
         "android.hardware.light-V1-ndk",
     ],
     vendor: true,

@@ -3,7 +3,11 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.xiaomi_sdm660"
 
+#include <binder/IServiceManager.h>
+#include <binder/IPCThreadState.h>
+#include <android/log.h>
 #include "Backlight.h"
 
 #include "LED.h"
@@ -23,6 +27,9 @@ public:
 
     void setBacklight(uint8_t value) {
         writeToFile(mBasePath + "brightness", value * mMaxBrightness / 0xFF);
+        int pid = ::android::IPCThreadState::self()->getCallingPid();
+	    int uid = ::android::IPCThreadState::self()->getCallingUid();
+        ALOGE("[Alc]setbrightness HAL, pid=%d, uid=%d, value=%u, max=%u", pid,uid,value,mMaxBrightness);
     }
 
     bool exists() {
@@ -36,28 +43,8 @@ private:
     inline static const uint32_t kDefaultMaxBrightness = 255;
 };
 
-class LEDBacklight : public BacklightDevice {
-public:
-    LEDBacklight(std::string type) : mLED(type) {};
-
-    void setBacklight(uint8_t value) {
-        mLED.setBrightness(value);
-    }
-
-    bool exists() {
-        return mLED.exists();
-    }
-private:
-    LED mLED;
-};
-
 static const std::string kBacklightDevices[] = {
     "backlight",
-    "panel0-backlight",
-};
-
-static const std::string kLedDevices[] = {
-    "lcd-backlight",
 };
 
 BacklightDevice *getBacklightDevice() {
@@ -68,15 +55,6 @@ BacklightDevice *getBacklightDevice() {
         }
         delete backlight;
     }
-
-    for (auto& device : kLedDevices) {
-        auto backlight = new LEDBacklight(device);
-        if (backlight->exists()) {
-            return backlight;
-        }
-        delete backlight;
-    }
-
     return nullptr;
 }
 
