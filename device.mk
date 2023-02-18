@@ -285,10 +285,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.system.keystore2
 
-# Launcher overlay
-PRODUCT_PACKAGES += \
-    NexusLauncherTabletOverlay
-
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light-service.xiaomi
